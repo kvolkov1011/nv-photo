@@ -1,0 +1,45 @@
+<header
+  id="hero"
+  class="relative flex h-screen min-h-[600px] items-end overflow-hidden px-[clamp(1.25rem,4vw,3rem)] pb-24 max-md:items-center max-md:pb-16"
+>
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/hero.jpg"
+      alt=""
+      aria-hidden="true"
+      class="h-full w-full object-cover animate-hero-zoom"
+    />
+  </div>
+  <div class="hero-overlay absolute inset-0 z-[1]"></div>
+
+  <div class="relative z-[2] max-w-[720px]">
+    <p
+      class="mb-6 text-xs font-normal tracking-[0.2em] text-champagne uppercase opacity-0 translate-y-5 animate-fade-up [animation-delay:300ms]"
+    >
+      Photography
+    </p>
+    <h1
+      class="mb-10 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.15] font-light tracking-[-0.01em] text-paper opacity-0 translate-y-[30px] animate-fade-up [animation-delay:500ms]"
+    >
+      Capturing light,<br /><em>emotion</em>, &amp; the stories<br />between moments
+    </h1>
+    <a
+      href="#portfolio"
+      class="inline-block bg-champagne px-10 py-4 text-[0.8rem] font-normal tracking-[0.12em] text-midnight uppercase transition-all duration-[400ms] ease-ref hover:-translate-y-0.5 hover:bg-paper opacity-0 translate-y-5 animate-fade-up [animation-delay:700ms]"
+    >
+      View Portfolio
+    </a>
+  </div>
+
+  <div
+    class="absolute right-[clamp(1.25rem,4vw,3rem)] bottom-8 z-[2] flex flex-col items-center gap-3 opacity-0 translate-y-5 animate-fade-up [animation-delay:1000ms] max-md:hidden"
+    aria-hidden="true"
+  >
+    <span class="text-[0.65rem] tracking-[0.15em] text-stone uppercase [writing-mode:vertical-rl]">
+      Scroll
+    </span>
+    <div class="relative h-12 w-px overflow-hidden bg-stone">
+      <div class="animate-scroll-line absolute inset-x-0 -top-full h-full bg-champagne"></div>
+    </div>
+  </div>
+</header>

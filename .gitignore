@@ -1,0 +1,20 @@
+# reference designs (temporary)
+refs/
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+
+# environment
+.env
+.env.*
+
+# cloudflare
+.wrangler/
+
+# misc
+.DS_Store
+*.log
