@@ -10,6 +10,13 @@
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
+  --container-page: 1240px;
+
+  --spacing-gutter: clamp(1.25rem, 4vw, 3rem);
+  --spacing-section: clamp(5rem, 12vw, 10rem);
+
+  --text-h2: clamp(2rem, 4vw, 3rem);
+
   --ease-ref: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   --animate-fade-up: fade-up 0.8s ease forwards;

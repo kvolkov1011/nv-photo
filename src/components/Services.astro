@@ -25,19 +25,19 @@ const services = [
 
 <section
   id="services"
-  class="bg-linear-to-b from-midnight to-[#111112] px-[clamp(1.25rem,4vw,3rem)] py-[clamp(5rem,12vw,10rem)]"
+  class="bg-linear-to-b from-midnight to-[#111112] px-gutter py-section"
 >
-  <div class="mx-auto max-w-[1240px]">
+  <div class="mx-auto max-w-page">
     <p class="section-label">Services</p>
-    <h2 class="services-heading mb-16 font-display text-[clamp(2rem,4vw,3rem)] font-light">
+    <h2 class="services-heading mb-16 font-display text-h2 font-light">
       What I do
     </h2>
 
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
       {
         services.map((service) => (
-          <article class="service-card group relative border border-parchment/10 px-8 py-10 transition-[border-color,translate] duration-[400ms] ease-ref hover:-translate-y-1 hover:border-champagne/30">
-            <span class="absolute top-0 left-0 h-0.5 w-0 bg-champagne transition-[width] duration-[400ms] ease-ref group-hover:w-full" />
+          <article class="service-card group relative border border-parchment/10 px-8 py-10 transition-[border-color,translate] duration-400 ease-ref hover:-translate-y-1 hover:border-champagne/30">
+            <span class="absolute top-0 left-0 h-0.5 w-0 bg-champagne transition-[width] duration-400 ease-ref group-hover:w-full" />
             <div
               class="mb-6 h-12 w-12 text-champagne [&>svg]:h-full [&>svg]:w-full"
               aria-hidden="true"

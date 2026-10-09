@@ -36,10 +36,10 @@ const kindLabel = {
 };
 ---
 
-<section id="portfolio" class="px-[clamp(1.25rem,4vw,3rem)] py-[clamp(5rem,12vw,10rem)]">
-  <div class="mx-auto max-w-[1240px]">
+<section id="portfolio" class="px-gutter py-section">
+  <div class="mx-auto max-w-page">
     <p class="section-label">Portfolio</p>
-    <h2 class="portfolio-heading mb-12 font-display text-[clamp(2rem,4vw,3rem)] font-light">
+    <h2 class="portfolio-heading mb-12 font-display text-h2 font-light">
       Selected works
     </h2>
 
@@ -47,7 +47,7 @@ const kindLabel = {
       {
         categories.map((cat, i) => (
           <button
-            class:list={['filter-btn', 'cursor-pointer border border-parchment/15 px-[1.4rem] py-[0.6rem] text-[0.8rem] font-light tracking-[0.06em] text-stone transition-all duration-[400ms] ease-ref hover:border-stone hover:text-paper', { active: i === 0 }]}
+            class:list={['filter-btn', 'cursor-pointer border border-parchment/15 px-[1.4rem] py-[0.6rem] text-[0.8rem] font-light tracking-[0.06em] text-stone transition-all duration-400 ease-ref hover:border-stone hover:text-paper', { active: i === 0 }]}
             data-filter={cat.key}
             type="button"
           >
@@ -58,7 +58,7 @@ const kindLabel = {
     </div>
 
     <div
-      class="gallery grid grid-flow-dense grid-cols-3 gap-4 auto-rows-[260px] max-[768px]:grid-cols-2 max-[768px]:auto-rows-[220px] max-[480px]:grid-cols-1 max-[480px]:auto-rows-[280px]"
+      class="gallery grid grid-flow-dense grid-cols-3 gap-4 auto-rows-65 max-[768px]:grid-cols-2 max-[768px]:auto-rows-55 max-[480px]:grid-cols-1 max-[480px]:auto-rows-70"
     >
       {
         gallery.map((item) => (
@@ -78,10 +78,10 @@ const kindLabel = {
               }
               alt={`${kindLabel[item.category]} — ${item.title}`}
               loading="lazy"
-              class="h-full w-full object-cover transition-[scale,filter] duration-[600ms] ease-ref group-hover:scale-[1.06] group-hover:brightness-[0.7]"
+              class="h-full w-full object-cover transition-[scale,filter] duration-600 ease-ref group-hover:scale-106 group-hover:brightness-70"
             />
             <div
-              class="absolute inset-x-0 bottom-0 translate-y-2 bg-linear-to-t from-midnight/80 to-transparent p-6 opacity-0 transition-all duration-[400ms] group-hover:translate-y-0 group-hover:opacity-100"
+              class="absolute inset-x-0 bottom-0 translate-y-2 bg-linear-to-t from-midnight/80 to-transparent p-6 opacity-0 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100"
             >
               <span class="font-display text-[1.1rem] font-normal tracking-[0.02em]">
                 {item.title}
@@ -96,19 +96,19 @@ const kindLabel = {
 
 <div
   id="lightbox"
-  class="lightbox fixed inset-0 z-[200] flex items-center justify-center bg-[rgba(10,10,11,0.96)]"
+  class="lightbox fixed inset-0 z-200 flex items-center justify-center bg-midnight/96"
   role="dialog"
   aria-label="Image lightbox"
   aria-hidden="true"
 >
   <button
     id="lightboxClose"
-    class="absolute top-6 right-6 z-[201] flex h-12 w-12 cursor-pointer items-center justify-center text-[2rem] leading-none text-stone transition-colors duration-[400ms] ease-ref hover:text-paper"
+    class="absolute top-6 right-6 z-201 flex h-12 w-12 cursor-pointer items-center justify-center text-[2rem] leading-none text-stone transition-colors duration-400 ease-ref hover:text-paper"
     aria-label="Close lightbox">&times;</button
   >
   <button
     id="lightboxPrev"
-    class="absolute left-6 top-1/2 z-[201] flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center text-stone transition-colors duration-[400ms] ease-ref hover:text-paper"
+    class="absolute left-6 top-1/2 z-201 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center text-stone transition-colors duration-400 ease-ref hover:text-paper"
     aria-label="Previous image"
   >
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
@@ -117,7 +117,7 @@ const kindLabel = {
   </button>
   <button
     id="lightboxNext"
-    class="absolute right-6 top-1/2 z-[201] flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center text-stone transition-colors duration-[400ms] ease-ref hover:text-paper"
+    class="absolute right-6 top-1/2 z-201 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center text-stone transition-colors duration-400 ease-ref hover:text-paper"
     aria-label="Next image"
   >
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
@@ -147,73 +147,75 @@ const kindLabel = {
   });
 
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement | null;
   const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxPrev = document.getElementById('lightboxPrev');
   const lightboxNext = document.getElementById('lightboxNext');
 
-  let currentIndex = 0;
-  let visibleItems: HTMLElement[] = [];
+  if (lightbox && lightboxImg && lightboxCaption && lightboxClose && lightboxPrev && lightboxNext) {
+    let currentIndex = 0;
+    let visibleItems: HTMLElement[] = [];
 
-  const getVisibleItems = () => {
-    visibleItems = galleryItems.filter((item) => !item.classList.contains('hidden'));
-  };
+    const getVisibleItems = () => {
+      visibleItems = galleryItems.filter((item) => !item.classList.contains('hidden'));
+    };
 
-  const updateLightboxContent = () => {
-    const item = visibleItems[currentIndex];
-    if (!item) return;
-    const img = item.querySelector('img');
-    lightboxImg.src = item.dataset.full;
-    lightboxImg.alt = img ? img.alt : '';
-    lightboxCaption.textContent = item.dataset.caption ?? '';
-  };
+    const updateLightboxContent = () => {
+      const item = visibleItems[currentIndex];
+      if (!item) return;
+      const img = item.querySelector('img');
+      lightboxImg.src = item.dataset.full ?? '';
+      lightboxImg.alt = img ? img.alt : '';
+      lightboxCaption.textContent = item.dataset.caption ?? '';
+    };
 
-  const openLightbox = (index: number) => {
-    getVisibleItems();
-    currentIndex = index;
-    updateLightboxContent();
-    lightbox.classList.add('active');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    lightbox.classList.remove('active');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-
-  const nextImage = () => {
-    currentIndex = (currentIndex + 1) % visibleItems.length;
-    updateLightboxContent();
-  };
-
-  const prevImage = () => {
-    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
-    updateLightboxContent();
-  };
-
-  galleryItems.forEach((item) => {
-    item.addEventListener('click', () => {
+    const openLightbox = (index: number) => {
       getVisibleItems();
-      const visibleIndex = visibleItems.indexOf(item);
-      if (visibleIndex !== -1) openLightbox(visibleIndex);
+      currentIndex = index;
+      updateLightboxContent();
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const nextImage = () => {
+      currentIndex = (currentIndex + 1) % visibleItems.length;
+      updateLightboxContent();
+    };
+
+    const prevImage = () => {
+      currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+      updateLightboxContent();
+    };
+
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        getVisibleItems();
+        const visibleIndex = visibleItems.indexOf(item);
+        if (visibleIndex !== -1) openLightbox(visibleIndex);
+      });
     });
-  });
 
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightboxNext.addEventListener('click', nextImage);
-  lightboxPrev.addEventListener('click', prevImage);
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxNext.addEventListener('click', nextImage);
+    lightboxPrev.addEventListener('click', prevImage);
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
 
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'ArrowLeft') prevImage();
-  });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+  }
 </script>
