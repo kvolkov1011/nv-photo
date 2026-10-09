@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { locale, t } from '../i18n';
 
 interface Props {
   title?: string;
@@ -7,14 +8,13 @@ interface Props {
 }
 
 const {
-  title = 'Elena Voss — Photography',
-  description =
-    'Elena Voss Photography — Capturing light, emotion, and the stories between moments. Portrait, editorial, and fine art photography.',
+  title = t.meta.title,
+  description = t.meta.description,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

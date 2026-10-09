@@ -26,6 +26,8 @@ src/pages/index.astro      the ONLY page; imports sections in order
 src/layouts/Base.astro     <head>, Google Fonts, global reveal-on-scroll script
 src/components/*.astro     one component per page section (Hero, About, Services,
                            Portfolio, Testimonial, Contact, Nav, Footer)
+src/i18n/en.json           ALL user-facing copy (default/only locale)
+src/i18n/index.ts          exports `t` (active dictionary) and `locale`
 src/styles/global.css      Tailwind v4 entry: @import + @theme tokens + base + JS-state classes
 public/images/             hero.jpg, about.jpg, gallery/{slug}-600.jpg + {slug}-1400.jpg
 functions/api/contact.js   Cloudflare Pages Function — POST /api/contact (email STUBBED)
@@ -41,9 +43,10 @@ Components are plain markup + frontmatter data arrays + their own `<script>` blo
 3. **Scroll-reveal requires a selector update.** `Base.astro` adds `.reveal` to a hardcoded selector list (`src/layouts/Base.astro:41`). New animatable sections/headings must be appended there or they simply won't animate.
 4. **Layout rhythm**: sections use `px-[clamp(1.25rem,4vw,3rem)] py-[clamp(5rem,12vw,10rem)]` and `mx-auto max-w-[1240px]`; headings use `font-display text-[clamp(2rem,4vw,3rem)] font-light`; each section starts with `<p class="section-label">`. Match existing components instead of writing new spacing systems.
 5. **Responsive**: mobile breakpoints are written as `max-md:` / `max-[480px]:` / `max-[768px]:` (max-width form), not `md:` min-width form. Keep that direction.
-6. **Images**: gallery items are referenced by slug; files must exist as `public/images/gallery/{slug}-600.jpg` and `-1400.jpg` (both, for srcset). Adding a gallery item = add a row to the `gallery` array in `Portfolio.astro` + two image files. Never hardcode full filenames.
-7. **Contact form**: honeypot field `website` must stay; front end posts JSON to `/api/contact`. Provider integration is intentionally stubbed in `sendEmail()` — don't "fix" it unless asked.
-8. **Accessibility patterns already in place**: `aria-label` on icon buttons, `aria-hidden` on decorative markup, `role="status"` on form feedback, `prefers-reduced-motion` override in `global.css`. Preserve them.
+6. **All copy lives in `src/i18n/en.json`** — components import `{ t }` from `../i18n` and never hardcode user-visible text (labels, headings, aria-labels, form/JS status strings). Headings/paragraphs containing `<br>` or `<em>` are stored as HTML strings and rendered with `set:html`. Non-text data (slugs, categories, layout `kind`, service keys, icons, hrefs) stays in component frontmatter; a second locale = new `src/i18n/{lang}.json` + entry in `dictionaries` in `src/i18n/index.ts`. Names/brand names, email and phone links are intentionally not translated.
+7. **Images**: gallery items are referenced by slug; files must exist as `public/images/gallery/{slug}-600.jpg` and `-1400.jpg` (both, for srcset). Adding a gallery item = a row in the `gallery` array in `Portfolio.astro` + a `portfolio.gallery.{slug}` title in `en.json` + two image files. Never hardcode full filenames.
+8. **Contact form**: honeypot field `website` must stay; front end posts JSON to `/api/contact`. Provider integration is intentionally stubbed in `sendEmail()` — don't "fix" it unless asked.
+9. **Accessibility patterns already in place**: `aria-label` on icon buttons, `aria-hidden` on decorative markup, `role="status"` on form feedback, `prefers-reduced-motion` override in `global.css`. Preserve them.
 
 ## Efficiency rules
 
@@ -52,6 +55,6 @@ Components are plain markup + frontmatter data arrays + their own `<script>` blo
 - **Don't add dependencies** for things Tailwind/Astro already do (no CSS-in-JS, no lodash, no icon packages — icons are inline SVG).
 - **Don't create new config files** (`tailwind.config`, eslint, prettier, etc.) unless explicitly requested; the project intentionally has none.
 - **Edit in place**: one page, section-per-component. Adding a section = new component + import line in `src/pages/index.astro` (+ reveal selector in `Base.astro`).
-- **Content lives in frontmatter arrays** (services, gallery, categories) — edit data there, not by duplicating markup.
+- **Copy lives in `src/i18n/en.json`**; structural data (gallery slugs/kinds, icons, hrefs) lives in component frontmatter arrays — edit data there, not by duplicating markup.
 - After any change: `npm run build`, then report the result in one line.
 - Deploy only when explicitly asked.

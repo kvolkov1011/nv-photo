@@ -1,20 +1,31 @@
+---
+import { t } from '../i18n';
+
+const serviceOptions = [
+  { value: '', label: t.contact.form.selectPlaceholder },
+  ...t.services.items.map((service) => ({ value: service.key, label: service.title })),
+  { value: 'other', label: t.contact.form.otherOption },
+];
+---
+
 <section
   id="contact"
   class="bg-linear-to-b from-midnight to-[#0d0d0e] px-gutter py-section"
 >
   <div class="contact-inner mx-auto grid max-w-page gap-[clamp(3rem,6vw,6rem)] lg:grid-cols-2">
     <div>
-      <p class="section-label">Get in touch</p>
-      <h2 class="contact-heading mb-12 font-display text-h2 leading-[1.2] font-light">
-        Let's make<br />something <em>together</em>
-      </h2>
+      <p class="section-label">{t.contact.label}</p>
+      <h2
+        class="contact-heading mb-12 font-display text-h2 leading-[1.2] font-light"
+        set:html={t.contact.heading}
+      />
 
       <div class="contact-details mb-12">
         <div class="mb-6">
           <span
             class="mb-1.5 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
           >
-            Email
+            {t.contact.details.email}
           </span>
           <a
             href="mailto:hello@elenavoss.com"
@@ -26,7 +37,7 @@
           <span
             class="mb-1.5 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
           >
-            Phone
+            {t.contact.details.phone}
           </span>
           <a
             href="tel:+12125551234"
@@ -38,9 +49,9 @@
           <span
             class="mb-1.5 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
           >
-            Studio
+            {t.contact.details.studio}
           </span>
-          <span class="text-base text-parchment">247 West 35th Street<br />New York, NY 10001</span>
+          <span class="text-base text-parchment" set:html={t.contact.details.address} />
         </div>
       </div>
 
@@ -82,10 +93,16 @@
     </div>
 
     <div>
-      <form id="contactForm" class="contact-form">
+      <form
+        id="contactForm"
+        class="contact-form"
+        data-sending={t.contact.form.sending}
+        data-sent={t.contact.form.sent}
+        data-error={t.contact.form.error}
+      >
         <div class="mb-6">
           <label for="name" class="mb-2 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
-            >Name</label
+            >{t.contact.form.name}</label
           >
           <input
             type="text"
@@ -98,7 +115,7 @@
         </div>
         <div class="mb-6">
           <label for="email" class="mb-2 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
-            >Email</label
+            >{t.contact.form.email}</label
           >
           <input
             type="email"
@@ -111,24 +128,23 @@
         </div>
         <div class="mb-6">
           <label for="service" class="mb-2 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
-            >Interested in</label
+            >{t.contact.form.service}</label
           >
           <select
             id="service"
             name="service"
             class="form-select w-full border-b border-parchment/20 bg-transparent py-3 text-[0.95rem] leading-[normal] font-light text-paper outline-none transition-colors duration-400 focus:border-champagne"
           >
-            <option value="">Select a service</option>
-            <option value="portrait">Portrait Photography</option>
-            <option value="editorial">Editorial &amp; Fashion</option>
-            <option value="fineart">Fine Art Projects</option>
-            <option value="commercial">Commercial Campaigns</option>
-            <option value="other">Something else</option>
+            {
+              serviceOptions.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))
+            }
           </select>
         </div>
         <div class="mb-6">
           <label for="message" class="mb-2 block text-[0.7rem] font-normal tracking-[0.12em] text-stone uppercase"
-            >Message</label
+            >{t.contact.form.message}</label
           >
           <textarea
             id="message"
@@ -148,7 +164,7 @@
           type="submit"
           class="form-submit mt-2 cursor-pointer border-none bg-champagne px-12 py-4 text-[0.8rem] leading-[normal] font-normal tracking-[0.12em] text-midnight uppercase transition-all duration-400 ease-ref hover:-translate-y-0.5 hover:bg-paper disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Send Inquiry
+          {t.contact.form.submit}
         </button>
         <p id="formStatus" class="mt-4 text-sm text-red-400" role="status" hidden></p>
       </form>
@@ -162,12 +178,18 @@
   const status = document.getElementById('formStatus');
 
   if (form instanceof HTMLFormElement && submitBtn && status) {
+    const labels = {
+      sending: form.dataset.sending ?? '',
+      sent: form.dataset.sent ?? '',
+      error: form.dataset.error ?? '',
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const originalLabel = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
+      submitBtn.textContent = labels.sending;
       status.hidden = true;
 
       try {
@@ -179,7 +201,7 @@
 
         if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
-        submitBtn.textContent = 'Sent — thank you';
+        submitBtn.textContent = labels.sent;
         form.reset();
 
         setTimeout(() => {
@@ -189,7 +211,7 @@
       } catch {
         submitBtn.textContent = originalLabel;
         submitBtn.disabled = false;
-        status.textContent = 'Something went wrong — please email hello@elenavoss.com directly.';
+        status.textContent = labels.error;
         status.hidden = false;
       }
     });

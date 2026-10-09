@@ -1,46 +1,40 @@
 ---
+import { t } from '../i18n';
+
 const gallery = [
-  { slug: 'portrait-morning-light', category: 'portrait', title: 'Morning Light', kind: 'normal' },
-  { slug: 'editorial-vogue-italia', category: 'editorial', title: 'Vogue Italia', kind: 'tall' },
-  { slug: 'landscape-silent-valley', category: 'landscape', title: 'Silent Valley', kind: 'normal' },
-  { slug: 'portrait-still-waters', category: 'portrait', title: 'Still Waters', kind: 'normal' },
-  { slug: 'fineart-vanishing-point', category: 'fineart', title: 'Vanishing Point', kind: 'wide' },
-  { slug: 'editorial-kinfolk-magazine', category: 'editorial', title: 'Kinfolk Magazine', kind: 'normal' },
-  { slug: 'landscape-suspended', category: 'landscape', title: 'Suspended', kind: 'tall' },
-  { slug: 'portrait-gold-hour', category: 'portrait', title: 'Gold Hour', kind: 'normal' },
-  { slug: 'fineart-ethereal', category: 'fineart', title: 'Ethereal', kind: 'normal' },
-  { slug: 'editorial-harpers-bazaar', category: 'editorial', title: "Harper's Bazaar", kind: 'wide' },
-  { slug: 'landscape-dusk-field', category: 'landscape', title: 'Dusk Field', kind: 'normal' },
-  { slug: 'portrait-in-repose', category: 'portrait', title: 'In Repose', kind: 'normal' },
+  { slug: 'portrait-morning-light', category: 'portrait', kind: 'normal' },
+  { slug: 'editorial-vogue-italia', category: 'editorial', kind: 'tall' },
+  { slug: 'landscape-silent-valley', category: 'landscape', kind: 'normal' },
+  { slug: 'portrait-still-waters', category: 'portrait', kind: 'normal' },
+  { slug: 'fineart-vanishing-point', category: 'fineart', kind: 'wide' },
+  { slug: 'editorial-kinfolk-magazine', category: 'editorial', kind: 'normal' },
+  { slug: 'landscape-suspended', category: 'landscape', kind: 'tall' },
+  { slug: 'portrait-gold-hour', category: 'portrait', kind: 'normal' },
+  { slug: 'fineart-ethereal', category: 'fineart', kind: 'normal' },
+  { slug: 'editorial-harpers-bazaar', category: 'editorial', kind: 'wide' },
+  { slug: 'landscape-dusk-field', category: 'landscape', kind: 'normal' },
+  { slug: 'portrait-in-repose', category: 'portrait', kind: 'normal' },
 ];
 
-const categories = [
-  { key: 'all', label: 'All' },
-  { key: 'portrait', label: 'Portraits' },
-  { key: 'editorial', label: 'Editorial' },
-  { key: 'landscape', label: 'Landscapes' },
-  { key: 'fineart', label: 'Fine Art' },
-];
+const titles: Record<string, string> = t.portfolio.gallery;
+const kinds: Record<string, string> = t.portfolio.kinds;
+
+const items = gallery.map((item) => ({ ...item, title: titles[item.slug] }));
+
+const categories = Object.entries(t.portfolio.categories).map(([key, label]) => ({ key, label }));
 
 const kindClass = {
   normal: '',
   wide: 'col-span-2 max-[480px]:col-span-1',
   tall: 'row-span-2',
 };
-
-const kindLabel = {
-  portrait: 'Portrait',
-  editorial: 'Editorial',
-  landscape: 'Landscape',
-  fineart: 'Fine Art',
-};
 ---
 
 <section id="portfolio" class="px-gutter py-section">
   <div class="mx-auto max-w-page">
-    <p class="section-label">Portfolio</p>
+    <p class="section-label">{t.portfolio.label}</p>
     <h2 class="portfolio-heading mb-12 font-display text-h2 font-light">
-      Selected works
+      {t.portfolio.heading}
     </h2>
 
     <div class="mb-12 flex flex-wrap gap-2">
@@ -61,7 +55,7 @@ const kindLabel = {
       class="gallery grid grid-flow-dense grid-cols-3 gap-4 auto-rows-65 max-[768px]:grid-cols-2 max-[768px]:auto-rows-55 max-[480px]:grid-cols-1 max-[480px]:auto-rows-70"
     >
       {
-        gallery.map((item) => (
+        items.map((item) => (
           <div
             class:list={['gallery-item group relative cursor-pointer overflow-hidden', kindClass[item.kind]]}
             data-category={item.category}
@@ -76,7 +70,7 @@ const kindLabel = {
                   ? '(min-width:1024px) 66vw, (min-width:768px) 100vw, 100vw'
                   : '(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw'
               }
-              alt={`${kindLabel[item.category]} — ${item.title}`}
+              alt={`${kinds[item.category]} — ${item.title}`}
               loading="lazy"
               class="h-full w-full object-cover transition-[scale,filter] duration-600 ease-ref group-hover:scale-106 group-hover:brightness-70"
             />
@@ -98,18 +92,18 @@ const kindLabel = {
   id="lightbox"
   class="lightbox fixed inset-0 z-200 flex items-center justify-center bg-midnight/96"
   role="dialog"
-  aria-label="Image lightbox"
+  aria-label={t.portfolio.lightbox.label}
   aria-hidden="true"
 >
   <button
     id="lightboxClose"
     class="absolute top-6 right-6 z-201 flex h-12 w-12 cursor-pointer items-center justify-center text-[2rem] leading-none text-stone transition-colors duration-400 ease-ref hover:text-paper"
-    aria-label="Close lightbox">&times;</button
+    aria-label={t.portfolio.lightbox.close}>&times;</button
   >
   <button
     id="lightboxPrev"
     class="absolute left-6 top-1/2 z-201 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center text-stone transition-colors duration-400 ease-ref hover:text-paper"
-    aria-label="Previous image"
+    aria-label={t.portfolio.lightbox.prev}
   >
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
       <polyline points="15 18 9 12 15 6"></polyline>
@@ -118,7 +112,7 @@ const kindLabel = {
   <button
     id="lightboxNext"
     class="absolute right-6 top-1/2 z-201 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center text-stone transition-colors duration-400 ease-ref hover:text-paper"
-    aria-label="Next image"
+    aria-label={t.portfolio.lightbox.next}
   >
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
       <polyline points="9 6 15 12 9 18"></polyline>

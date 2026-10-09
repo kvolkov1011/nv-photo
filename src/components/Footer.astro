@@ -1,17 +1,21 @@
+---
+import { t } from '../i18n';
+---
+
 <footer class="border-t border-parchment/10 px-gutter py-8">
   <div
     class="mx-auto flex max-w-page items-center justify-between max-md:flex-col max-md:gap-6 max-md:text-center"
   >
     <div class="flex items-center gap-8 max-md:flex-col max-md:gap-2">
-      <span class="font-display text-[1.1rem] font-normal text-paper">Elena Voss</span>
-      <span class="text-sm text-stone">&copy; 2026. All rights reserved.</span>
+      <span class="font-display text-[1.1rem] font-normal text-paper">{t.footer.brand}</span>
+      <span class="text-sm text-stone">{t.footer.copyright}</span>
     </div>
     <div>
       <a
         href="#hero"
         class="group flex items-center gap-2 text-[0.75rem] tracking-widest text-stone uppercase transition-colors duration-400 ease-ref hover:text-champagne"
       >
-        <span>Back to top</span>
+        <span>{t.footer.backToTop}</span>
         <svg
           viewBox="0 0 24 24"
           fill="none"

@@ -1,3 +1,7 @@
+---
+import { t } from '../i18n';
+---
+
 <section class="px-gutter py-[clamp(5rem,12vw,8rem)] text-center">
   <div class="testimonial-inner mx-auto max-w-175">
     <svg
@@ -13,11 +17,10 @@
     <blockquote
       class="mb-8 font-display text-[clamp(1.3rem,2.5vw,1.75rem)] leading-normal font-light italic text-parchment"
     >
-      Elena doesn't just take photographs — she finds the silence in a room and makes you look
-      directly at it. Working with her changed how I think about being seen.
+      {t.testimonial.quote}
     </blockquote>
     <cite class="text-sm font-light tracking-[0.04em] text-stone not-italic">
-      — Sofia Marchetti, Creative Director at Kinfolk
+      {t.testimonial.cite}
     </cite>
   </div>
 </section>
