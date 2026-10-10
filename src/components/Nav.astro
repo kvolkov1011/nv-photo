@@ -1,5 +1,8 @@
 ---
-import { t } from '../i18n';
+import { locales, pathFor, resolveLocale, tFor, type Locale } from '../i18n';
+
+const locale = resolveLocale(Astro.currentLocale);
+const t = tFor(locale);
 
 const links = [
   { id: 'about', href: '#about' },
@@ -7,6 +10,16 @@ const links = [
   { id: 'portfolio', href: '#portfolio' },
   { id: 'contact', href: '#contact' },
 ] as const;
+
+const codes: Record<Locale, string> = { uk: 'UA', en: 'EN' };
+
+const languages = locales.map((l) => ({
+  locale: l,
+  code: codes[l],
+  href: pathFor(l),
+  label: t.nav.switcher[l],
+  active: l === locale,
+}));
 
 const linkClass =
   'relative text-[0.85rem] font-light tracking-[0.04em] text-paper transition-colors duration-400 ease-ref after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne after:transition-all after:duration-400 hover:text-champagne hover:after:w-full max-md:text-[1.1rem]';
@@ -43,6 +56,41 @@ const linkClass =
         </li>
       ))
     }
+    <li class="text-[0.85rem] font-light tracking-[0.04em] max-md:text-[1.1rem]">
+      <div
+        role="group"
+        aria-label={t.nav.switcher.aria}
+        class="flex list-none items-center gap-2.5"
+      >
+        {
+          languages.map((lang, i) => (
+            <>
+              {i > 0 && (
+                <span aria-hidden="true" class="text-paper/25">
+                  /
+                </span>
+              )}
+              {lang.active ? (
+                <span aria-current="true" lang={lang.locale} class="text-champagne">
+                  {lang.code}
+                  <span class="sr-only"> — {lang.label}</span>
+                </span>
+              ) : (
+                <a
+                  href={lang.href}
+                  hreflang={lang.locale}
+                  lang={lang.locale}
+                  aria-label={lang.label}
+                  class="text-paper/55 transition-colors duration-400 ease-ref hover:text-champagne"
+                >
+                  {lang.code}
+                </a>
+              )}
+            </>
+          ))
+        }
+      </div>
+    </li>
   </ul>
 </nav>
 

@@ -1,5 +1,7 @@
 ---
-import { t } from '../i18n';
+import { tFor } from '../i18n';
+
+const t = tFor(Astro.currentLocale);
 
 const serviceOptions = [
   { value: '', label: t.contact.form.selectPlaceholder },

@@ -11,6 +11,11 @@
       "services": "Напрями",
       "portfolio": "Портфоліо",
       "contact": "Контакти"
+    },
+    "switcher": {
+      "aria": "Змінити мову",
+      "uk": "Українська",
+      "en": "English"
     }
   },
   "hero": {
