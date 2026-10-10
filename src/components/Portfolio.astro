@@ -3,16 +3,16 @@ import { t } from '../i18n';
 
 const gallery = [
   { slug: 'portrait-morning-light', category: 'portrait', kind: 'normal' },
-  { slug: 'editorial-vogue-italia', category: 'editorial', kind: 'tall' },
-  { slug: 'landscape-silent-valley', category: 'landscape', kind: 'normal' },
+  { slug: 'editorial-vogue-italia', category: 'projects', kind: 'tall' },
+  { slug: 'landscape-silent-valley', category: 'diaries', kind: 'normal' },
   { slug: 'portrait-still-waters', category: 'portrait', kind: 'normal' },
-  { slug: 'fineart-vanishing-point', category: 'fineart', kind: 'wide' },
-  { slug: 'editorial-kinfolk-magazine', category: 'editorial', kind: 'normal' },
-  { slug: 'landscape-suspended', category: 'landscape', kind: 'tall' },
+  { slug: 'fineart-vanishing-point', category: 'nude', kind: 'wide' },
+  { slug: 'editorial-kinfolk-magazine', category: 'projects', kind: 'normal' },
+  { slug: 'landscape-suspended', category: 'diaries', kind: 'tall' },
   { slug: 'portrait-gold-hour', category: 'portrait', kind: 'normal' },
-  { slug: 'fineart-ethereal', category: 'fineart', kind: 'normal' },
-  { slug: 'editorial-harpers-bazaar', category: 'editorial', kind: 'wide' },
-  { slug: 'landscape-dusk-field', category: 'landscape', kind: 'normal' },
+  { slug: 'fineart-ethereal', category: 'nude', kind: 'normal' },
+  { slug: 'editorial-harpers-bazaar', category: 'projects', kind: 'wide' },
+  { slug: 'landscape-dusk-field', category: 'diaries', kind: 'normal' },
   { slug: 'portrait-in-repose', category: 'portrait', kind: 'normal' },
 ];
 
@@ -52,7 +52,7 @@ const kindClass = {
     </div>
 
     <div
-      class="gallery grid grid-flow-dense grid-cols-3 gap-4 auto-rows-65 max-[768px]:grid-cols-2 max-[768px]:auto-rows-55 max-[480px]:grid-cols-1 max-[480px]:auto-rows-70"
+      class="grid grid-flow-dense grid-cols-3 gap-4 auto-rows-65 max-[768px]:grid-cols-2 max-[768px]:auto-rows-55 max-[480px]:grid-cols-1 max-[480px]:auto-rows-70"
     >
       {
         items.map((item) => (

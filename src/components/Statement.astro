@@ -1,0 +1,41 @@
+---
+import { t } from '../i18n';
+---
+
+<section class="px-gutter py-[clamp(5rem,12vw,8rem)]">
+  <div class="statement-inner mx-auto max-w-page text-center">
+    <p class="section-label">{t.statement.label}</p>
+    <h2 class="statement-heading mb-10 font-display text-h2 font-light">
+      {t.statement.heading}
+    </h2>
+
+    <div class="mx-auto max-w-[30ch]">
+      <svg
+        class="mb-6 h-10 w-10 text-champagne opacity-40 mx-auto"
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M14 28c-4.418 0-8-3.582-8-8 0-6.627 5.373-12 12-12v4c-4.418 0-8 3.582-8 8h4zm20 0c-4.418 0-8-3.582-8-8 0-6.627 5.373-12 12-12v4c-4.418 0-8 3.582-8 8h4z"
+        ></path>
+      </svg>
+      <blockquote
+        class="mb-5 font-display text-[clamp(1.3rem,2.5vw,1.75rem)] leading-normal font-light italic text-parchment"
+      >
+        {t.statement.quote}
+      </blockquote>
+      <cite class="text-sm font-light tracking-[0.04em] text-stone not-italic">
+        — {t.statement.cite}
+      </cite>
+    </div>
+
+    <div class="mx-auto mt-14 max-w-[62ch] text-left">
+      {
+        t.statement.paragraphs.map((paragraph) => (
+          <p class="mb-5 text-[1rem] leading-[1.8] font-light text-stone">{paragraph}</p>
+        ))
+      }
+    </div>
+  </div>
+</section>

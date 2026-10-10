@@ -6,8 +6,12 @@ import { t } from '../i18n';
   <div
     class="mx-auto flex max-w-page items-center justify-between max-md:flex-col max-md:gap-6 max-md:text-center"
   >
-    <div class="flex items-center gap-8 max-md:flex-col max-md:gap-2">
+    <div class="flex items-center gap-6 max-md:flex-col max-md:gap-2">
       <span class="font-display text-[1.1rem] font-normal text-paper">{t.footer.brand}</span>
+      <span class="text-sm text-stone">{t.footer.role}</span>
+    </div>
+    <div class="flex items-center gap-6 max-md:flex-col max-md:gap-2">
+      <span class="hidden text-sm text-stone lg:inline">{t.footer.tagline}</span>
       <span class="text-sm text-stone">{t.footer.copyright}</span>
     </div>
     <div>
