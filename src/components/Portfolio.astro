@@ -4,18 +4,15 @@ import { tFor } from '../i18n';
 const t = tFor(Astro.currentLocale);
 
 const gallery = [
-  { slug: 'portrait-morning-light', category: 'portrait', kind: 'normal' },
-  { slug: 'editorial-vogue-italia', category: 'projects', kind: 'tall' },
-  { slug: 'landscape-silent-valley', category: 'diaries', kind: 'normal' },
-  { slug: 'portrait-still-waters', category: 'portrait', kind: 'normal' },
-  { slug: 'fineart-vanishing-point', category: 'nude', kind: 'wide' },
-  { slug: 'editorial-kinfolk-magazine', category: 'projects', kind: 'normal' },
-  { slug: 'landscape-suspended', category: 'diaries', kind: 'tall' },
-  { slug: 'portrait-gold-hour', category: 'portrait', kind: 'normal' },
-  { slug: 'fineart-ethereal', category: 'nude', kind: 'normal' },
-  { slug: 'editorial-harpers-bazaar', category: 'projects', kind: 'wide' },
-  { slug: 'landscape-dusk-field', category: 'diaries', kind: 'normal' },
-  { slug: 'portrait-in-repose', category: 'portrait', kind: 'normal' },
+  { slug: 'IMG_1196', category: 'diaries', kind: 'normal', ext: 'png' },
+  { slug: 'IMG_1283', category: 'diaries', kind: 'tall', ext: 'png' },
+  { slug: 'IMG_1726', category: 'diaries', kind: 'normal', ext: 'png' },
+  { slug: 'IMG_1842', category: 'diaries', kind: 'wide', ext: 'png' },
+  { slug: 'IMG_2586', category: 'diaries', kind: 'normal', ext: 'png' },
+  { slug: 'IMG_2666', category: 'diaries', kind: 'normal', ext: 'png' },
+  { slug: 'IMG_2839-2', category: 'diaries', kind: 'tall', ext: 'png' },
+  { slug: 'IMG_9601', category: 'diaries', kind: 'wide', ext: 'png' },
+  { slug: 'photo_2026-10-11_13-41-15', category: 'diaries', kind: 'normal', ext: 'png' },
 ];
 
 const titles: Record<string, string> = t.portfolio.gallery;
@@ -61,12 +58,12 @@ const kindClass = {
           <div
             class:list={['gallery-item group relative cursor-pointer overflow-hidden', kindClass[item.kind]]}
             data-category={item.category}
-            data-full={`/images/gallery/${item.slug}-1400.jpg`}
+            data-full={`/images/gallery/${item.slug}-1400.${item.ext}`}
             data-caption={item.title}
           >
             <img
-              src={`/images/gallery/${item.slug}-600.jpg`}
-              srcset={`/images/gallery/${item.slug}-600.jpg 600w, /images/gallery/${item.slug}-1400.jpg 1400w`}
+              src={`/images/gallery/${item.slug}-600.${item.ext}`}
+              srcset={`/images/gallery/${item.slug}-600.${item.ext} 600w, /images/gallery/${item.slug}-1400.${item.ext} 1400w`}
               sizes={
                 item.kind === 'wide'
                   ? '(min-width:1024px) 66vw, (min-width:768px) 100vw, 100vw'
