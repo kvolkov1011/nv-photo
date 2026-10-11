@@ -4,7 +4,7 @@ Instructions for AI agents working in this repo. Read this before searching so y
 
 ## What this is
 
-Static single-page photography portfolio ("Elena Voss Photography") built with **Astro 7 + Tailwind CSS v4**, deployed to **Cloudflare Pages** (with one Pages Function). One commit history, no CI, no tests. Two locales are built: Ukrainian at `/` (default) and English at `/en/`, switched via the UA/EN control in the nav.
+Static single-page photography portfolio ("Elena Voss Photography") built with **Astro 7 + Tailwind CSS v4**, deployed to **Cloudflare Workers** (static assets + one Worker route). One commit history, no CI, no tests. Two locales are built: Ukrainian at `/` (default) and English at `/en/`, switched via the UA/EN control in the nav.
 
 ## Commands
 
@@ -13,7 +13,7 @@ Static single-page photography portfolio ("Elena Voss Photography") built with *
 | Dev server | `npm run dev` |
 | Verify changes | `npm run build` (~1s — this is the only check) |
 | Preview build | `npm run preview` |
-| Deploy | `npm run deploy` (wrangler pages deploy dist) |
+| Deploy | `npm run deploy` (wrangler deploy) |
 
 - **No lint, no test, no typecheck script exists.** `npx astro check` prompts interactively to install `@astrojs/check` — do not run it unattended. If asked to add typechecking, install `@astrojs/check` + `typescript` and add a `"check"` script.
 - Build failures surface as Astro/Vite errors in `npm run build` output; always run it after editing and read the tail of the output.
@@ -33,7 +33,7 @@ src/i18n/en.json           ALL English copy — same key tree as uk.json, verbat
 src/i18n/index.ts          dictionaries + `tFor(locale)`, `resolveLocale`, `pathFor`
 src/styles/global.css      Tailwind v4 entry: @import + @theme tokens + base + JS-state classes
 public/images/             hero.jpg, about.jpg, gallery/{slug}-600.jpg + {slug}-1400.jpg
-functions/api/contact.js   Cloudflare Pages Function — POST /api/contact (email STUBBED)
+src/worker.js           Cloudflare Worker — static assets + POST /api/contact (email STUBBED)
 refs/                      gitignored reference design (temporary) — skip unless asked
 ```
 
