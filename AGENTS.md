@@ -4,7 +4,7 @@ Instructions for AI agents working in this repo. Read this before searching so y
 
 ## What this is
 
-Static single-page photography portfolio ("Elena Voss Photography") built with **Astro 7 + Tailwind CSS v4**, deployed to **Cloudflare Workers** (static assets + one Worker route). One commit history, no CI, no tests. Two locales are built: Ukrainian at `/` (default) and English at `/en/`, switched via the UA/EN control in the nav.
+Static single-page photography portfolio ("Надія Волкова Photography") built with **Astro 7 + Tailwind CSS v4**, deployed to **Cloudflare Workers** (static assets + one Worker route). One commit history, no CI, no tests. Two locales are built: Ukrainian at `/` (default) and English at `/en/`, switched via the UA/EN control in the nav.
 
 ## Commands
 

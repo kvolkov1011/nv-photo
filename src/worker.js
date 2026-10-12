@@ -6,7 +6,7 @@
  * variable (e.g. RESEND_API_KEY) — no front-end changes required.
  */
 
-const EMAIL_TO = 'hello@elenavoss.com';
+const EMAIL_TO = 'hello@nadiavolkova.com';
 
 export default {
   async fetch(request, env) {
