@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Nadiia Volkova — Photography",
-    "description": "Photography about a person, the body and what remains between the lines. Psychological portraiture, the nude, personal photo projects. Nadiia Volkova, Kyiv."
+    "description": "Photography about people, the body and what lies between the lines. Psychological portraiture, the nude and the body, personal projects. Nadiia Volkova, Kyiv."
   },
   "nav": {
     "brand": "Nadiia Volkova",
@@ -20,22 +20,22 @@
   },
   "hero": {
     "eyebrow": "Photographer and visual artist",
-    "headline": "Photography about<br>a person, the body<br>and what <em>remains</em><br>between the lines",
-    "subline": "Psychological portraiture, the nude, personal photo projects.",
-    "cta": "View the work",
+    "headline": "Photography about<br>people, the body<br>and what <em>lies</em><br>between the lines",
+    "subline": "Psychological portraiture · The nude and the body · Personal projects",
+    "cta": "View selected work",
     "ctaSecondary": "Get in touch",
     "scroll": "Scroll"
   },
   "about": {
     "label": "About me",
-    "heading": "I believe photography<br>can see <em>more</em> than<br>we are used to showing",
+    "heading": "I believe photography<br>can <em>reveal</em> more than<br>we are used to showing",
     "imageAlt": "Nadiia Volkova",
     "paragraphs": [
-      "I have worked in photography since 2012, though I started shooting much earlier. As a child I photographed sunrises, sunsets, flowers, animals and landscapes on a simple film camera. I have always been drawn to watching the world, to noticing what you can walk straight past without ever seeing it.",
-      "Over time, a person moved to the centre of my attention. Their face, body, gestures, the way they are in the frame. How we show ourselves to others — and what we cannot, or do not want, to show.",
-      "I am a Ukrainian photographer and psychotherapist. My professional path in psychology shaped how I look at a person, although photography for me is a separate space of inquiry. What matters there is presence, form, light, gaze — and the chance to see something there are no words for yet.",
-      "I do not try to make a person perfect in the frame. I am more interested in finding an image in which they do not have to meet anyone's idea of beauty, femininity, masculinity or the right body.",
-      "Perhaps photography begins for me exactly where the need to prove something ends."
+      "I have been working with photography since 2012, although I started taking photographs long before that. As a child, I used a simple film camera to photograph sunrises, sunsets, flowers, animals, and landscapes. I have always been drawn to observing the world, noticing things that might otherwise go unseen.",
+      "Over time, people became the focus of my attention. Their faces, bodies, gestures, and ways of being in front of the camera. The ways we present ourselves to others, and the things we do not always know how to show, or choose not to.",
+      "I am a Ukrainian photographer and psychotherapist. My background in psychology has shaped the way I see people, although photography remains a space of exploration in its own right. What matters to me is presence, form, light, a gaze, and the possibility of seeing something for which words have not yet been found.",
+      "I am not trying to make people look perfect in front of the camera. I am more interested in finding an image in which they do not have to conform to anyone's ideas of beauty, femininity, masculinity, or what a body should look like.",
+      "Perhaps, for me, photography begins precisely where the need to prove something ends."
     ]
   },
   "services": {
@@ -44,23 +44,23 @@
     "items": [
       {
         "key": "portrait",
-        "title": "Psychological portrait",
-        "text": "I am interested not only in how a person looks, but in how they are present in the frame. The gaze, tension and release, habitual gestures, the moments when the need to play a role falls away. I make portraits where what matters is not the pose or the styling, but the person themselves."
+        "title": "Psychological portraiture",
+        "text": "I am interested not only in how a person looks, but in how they inhabit the frame. Their gaze, moments of tension and ease, familiar gestures, and those moments when the need to play a role begins to fall away. I create portraits in which the person matters more than the pose or the image they are expected to project."
       },
       {
         "key": "nude",
-        "title": "Nude",
-        "text": "The body, for me, is not an object to be corrected or made more attractive. It has its own shape, history, texture and presence. In this work I am drawn to embodiment beyond normative beauty, to vulnerability, strength, ambiguity — and to the way a body becomes an image."
+        "title": "The nude & the body",
+        "text": "To me, the body is not something to be corrected or made more attractive. It has its own form, history, texture, and presence. In this work, I explore embodiment beyond conventional ideals of beauty, vulnerability, strength, ambiguity, and the ways in which the body becomes an image."
       },
       {
         "key": "projects",
         "title": "Personal projects",
-        "text": "This is a space for themes I return to for years. For exploring the body, identity, memory, vulnerability, and what is hard to put into words directly. Here photography can be a document, a metaphor, a question, or a way of staying close to something that has no simple explanation."
+        "text": "This is a space for themes I return to over the years: the body, identity, memory, vulnerability, and experiences that are difficult to express directly. Here, photography can become a document, a metaphor, a question, or a way of staying with something that has no simple explanation."
       },
       {
         "key": "diaries",
         "title": "Visual diaries",
-        "text": "Landscapes, plants, animals, light, and the places your mind returns to even after years. This is photography outside of briefs and deadlines — watching the world, a part of my personal archive, a way of keeping what is changing or disappearing."
+        "text": "Landscapes, plants, animals, light, and places I find myself returning to in my thoughts, even years later. This is photography beyond assignments and deadlines: a way of observing the world, building a personal archive, and preserving what is changing or disappearing."
       }
     ]
   },
@@ -99,26 +99,25 @@
     }
   },
   "statement": {
-    "label": "Statement",
+    "label": "Artist statement",
     "heading": "My photography",
-    "quote": "Perfection doesn't interest me — life itself does.",
+    "quote": "I am not interested in perfection. I am interested in life itself.",
     "cite": "Nadiia Volkova",
     "paragraphs": [
-      "I photograph people, but what interests me is not only what can be seen.",
-      "I am drawn to the body as part of our story, as a way of being in the world, as something we know more intimately than anything else and can also feel is foreign. I am drawn to beauty that needs no standard to measure up to, and to vulnerability that does not necessarily mean weakness.",
-      "My eye was formed at the intersection of photography, psychology and a years-long interest in how a person experiences themselves and meets others. Yet I do not look for a psychological explanation in every image. Sometimes form, light, a gaze or a gesture is enough. Sometimes photography asks more questions than it answers.",
-      "I want to leave room for ambiguity. Not to explain everything to the end, not to turn experience into a beautiful story, and not to ask a person to be someone else in order to deserve attention.",
-      "Perhaps that is why I return, again and again, to the portrait and the body. To what we show, hide, accept, reject, and try to see anew.",
-      "I do not want to repair a person, to make them better, to fit them to an idea of normal. But to look carefully, and to let the image be more complex than a simple explanation."
+      "I photograph people, but I am interested in more than what can be seen.",
+      "I am drawn to the body as part of our personal history, as a way of being in the world, as something we know intimately and can nevertheless experience as unfamiliar or estranged. I am interested in a kind of beauty that does not depend on meeting a standard, and in vulnerability that does not necessarily mean weakness.",
+      "My perspective has developed at the intersection of photography, psychology, and a long-standing interest in how people experience themselves and relate to others. Yet I do not look for a psychological explanation in every image. Sometimes form, light, a gaze, or a gesture is enough. Sometimes a photograph raises more questions than it answers.",
+      "It matters to me to leave room for ambiguity. Not to explain everything, not to turn experience into a beautiful story, and not to ask people to become someone else in order to deserve attention.",
+      "Perhaps this is why I keep returning to the portrait and the body: to what we reveal, what we conceal, what we accept, what we reject, and what we are still trying to see differently."
     ]
   },
   "contact": {
     "label": "Get in touch",
-    "heading": "If my <em>gaze</em> on<br>photography feels<br>close to you",
+    "heading": "Let's make<br>something <em>together</em>",
     "paragraphs": [
-      "If you want to create a portrait, explore your own image, or talk about working together — write to me.",
-      "I am open to individual sessions, artistic collaborations, and projects that leave room for curiosity, trust, and the search for your own visual language.",
-      "Tell me a little about your idea. You do not need to know yet what the result should be."
+      "If my approach to photography resonates with you, if you would like to create a portrait, explore your own image, or discuss a possible collaboration, I would love to hear from you.",
+      "I am open to individual portrait sessions, artistic collaborations, and projects that leave room for curiosity, trust, and the search for a visual language of one's own.",
+      "Tell me a little about your idea. You do not need to know exactly what the final result should look like."
     ],
     "signature": {
       "name": "Nadiia Volkova",
@@ -143,8 +142,8 @@
   },
   "footer": {
     "brand": "Nadiia Volkova",
-    "role": "photographer and visual artist",
-    "tagline": "Psychological portrait · Body · Personal projects",
+    "role": "photographer & visual artist",
+    "tagline": "Psychological portraiture · The body · Personal projects",
     "copyright": "© Nadiia Volkova, 2026",
     "backToTop": "Back to top"
   }
