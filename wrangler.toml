@@ -2,6 +2,17 @@ name = "nv-photo"
 compatibility_date = "2026-10-07"
 main = "src/worker.js"
 
+routes = [
+  { pattern = "photo.nadiia-volkova.com", custom_domain = true },
+]
+
+# Optional Worker variables — set them in the Cloudflare dashboard
+# (Workers & Pages → nv-photo → Settings → Variables and Secrets), so they
+# are not overwritten by deploys:
+#   EMAIL_FROM      default photo@nadiia-volkova.com
+#   EMAIL_TO        default veryonehope@gmail.com
+#   RESEND_API_KEY  secret, required once sendEmail() is implemented
+
 [assets]
 directory = "./dist"
 run_worker_first = ["/api/*"]

@@ -1,12 +1,17 @@
 /**
  * Cloudflare Worker — serves the static site from the [assets] directory and
  * handles POST /api/contact. The provider integration is currently STUBBED:
- * sendEmail() only logs the inquiry. To go live, implement a provider
- * (example: Resend) inside sendEmail() and add the API key as a Worker
- * variable (e.g. RESEND_API_KEY) — no front-end changes required.
+ * sendEmail() only logs the inquiry. Inquiry mail is addressed from
+ * env.EMAIL_FROM to env.EMAIL_TO; both are settable in the Cloudflare
+ * dashboard (Workers & Pages → nv-photo → Settings → Variables and Secrets)
+ * and fall back to the defaults below when unset.
+ * To go live, implement a provider (example: Resend) inside sendEmail() and
+ * add the API key as a Worker variable (e.g. RESEND_API_KEY) — no front-end
+ * changes required.
  */
 
-const EMAIL_TO = 'hello@nadiavolkova.com';
+const DEFAULT_EMAIL_FROM = 'photo@nadiia-volkova.com';
+const DEFAULT_EMAIL_TO = 'veryonehope@gmail.com';
 
 export default {
   async fetch(request, env) {
@@ -57,6 +62,8 @@ export default {
  *
  * Example with Resend:
  *
+ *   const from = env.EMAIL_FROM || DEFAULT_EMAIL_FROM;
+ *   const to = env.EMAIL_TO || DEFAULT_EMAIL_TO;
  *   const res = await fetch('https://api.resend.com/emails', {
  *     method: 'POST',
  *     headers: {
@@ -64,8 +71,8 @@ export default {
  *       'Content-Type': 'application/json',
  *     },
  *     body: JSON.stringify({
- *       from: 'site@yourdomain.com',
- *       to: EMAIL_TO,
+ *       from,
+ *       to,
  *       reply_to: inquiry.email,
  *       subject: `New inquiry from ${inquiry.name}`,
  *       text: [
@@ -80,8 +87,13 @@ export default {
  *   if (!res.ok) throw new Error(`Resend error: ${res.status}`);
  */
 async function sendEmail(env, inquiry) {
-  console.log('contact inquiry (stub — not delivered):', JSON.stringify(inquiry));
-  return { delivered: false, provider: 'stub' };
+  const from = env.EMAIL_FROM || DEFAULT_EMAIL_FROM;
+  const to = env.EMAIL_TO || DEFAULT_EMAIL_TO;
+  console.log(
+    'contact inquiry (stub — not delivered):',
+    JSON.stringify({ from, to, ...inquiry }),
+  );
+  return { delivered: false, provider: 'stub', from, to };
 }
 
 function json(body, status = 200) {
